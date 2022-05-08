@@ -1,11 +1,14 @@
+# netprobe
+
 ## purpose
 
 tiny go application to explore building different kinds of network probes atop the go standard library.
 
 ## status
 
-*	supports TCP
-*	supports TLS
+*	supported protocols
+*	TCP
+*	TLS
 *	failed probes are communicated in terrible way (panic on probe fail!)
 
 ## usage
@@ -13,25 +16,25 @@ tiny go application to explore building different kinds of network probes atop t
 ### build it
 
 ```
-go build -o main main.go
+go build -o netprobe main.go
 ```
 
 ### run a TCP probe
 
 ```
-./main -url=tcp://example.com:80
+./netprobe -url=tcp://example.com:80
 ```
 
 ### run a TLS probe, using root CAs trusted by the operating system
 
 ```
-./main -url=tls://example.com:443
+./netprobe -url=tls://example.com:443
 ```
 
 ### run a TLS probe, distrusting all root CAs
 
 ```
-./main -url=tls://example.com:443 -tls-trust-no-one
+./netprobe -url=tls://example.com:443 -tls-trust-no-one
 ```
 
 ### run it while tracing linux kernel `tcp_sendmsg`:
