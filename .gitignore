@@ -1,0 +1,4 @@
+/.idea/
+/cmd/netprobe/main
+perf.data
+perf.data.old
