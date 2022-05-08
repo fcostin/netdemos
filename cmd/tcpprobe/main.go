@@ -32,6 +32,7 @@ func (v URLValue) Set(s string) error {
 }
 
 func main() {
+	// TODO: better CLI UX to communicate probe status & failures
 	handleErr := func(err error) {
 		if err == nil {
 			return
@@ -51,6 +52,7 @@ func main() {
 	err := fs.Parse(os.Args[1:])
 	handleErr(err)
 
+	// TODO: expose timeout as flag
 	timeout := 5 * time.Second
 
 	// If we attempt to connect to a remote host & port that is not accepting TCP
@@ -63,7 +65,10 @@ func main() {
 		dialer := &net.Dialer{
 			Timeout: timeout,
 		}
+		// TODO: expose flags to restrict TLS protocol version
+		// TODO: expose flags to restrict TLS cipher suites
 		tlsCfg := &tls.Config{}
+		// TODO: expose flag to read custom root CAs from filesystem path
 		if trustNoOne {
 			tlsCfg.RootCAs = x509.NewCertPool() // empty!
 		}
