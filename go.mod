@@ -1,3 +1,3 @@
-module probepocs
+module netdemos
 
 go 1.18
